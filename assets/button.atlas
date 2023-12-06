@@ -1,0 +1,7 @@
+button.png
+size:512,128
+repeat:none
+clickedButton
+bounds:2,2,175,100
+unclickedButton
+bounds:179,2,175,100
