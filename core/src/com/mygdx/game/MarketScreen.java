@@ -3,7 +3,6 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -23,16 +22,12 @@ public class MarketScreen implements Screen {
     private final Music backgroundMusic;
 
     private Stage stage;
-    private Table table;
-    private TextButton button1;
-    private TextButton button2;
-    private TextArea text;
 
     public MarketScreen(final Heist game) {
         this.game = game;
 
         //load images (64x64 pixels)
-        backgroundImage = new Texture("background.jpeg");
+        backgroundImage = new Texture("1 market.jpeg");
 
         //load sound effects and music
         backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("ironLung.mp3"));
@@ -48,7 +43,7 @@ public class MarketScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         //table setup
-        table = new Table();
+        Table table = new Table();
         table.setFillParent(true);
         stage.addActor(table);
         table.pad(70);
@@ -58,19 +53,20 @@ public class MarketScreen implements Screen {
         String dialogue = "You turn around from the market stall to the sound of your name at a shout. It's your long-time friend and " +
                 " fellow bounty hunter, Wesdru. There's an urgency to her mannerisms that raises your heart rate immediately, " +
                 "your hand flying to the sword pommel at your hip. 'It's Lorena. Dras has her.' Keegin Dras, this lawless town's " +
-                "most feared crime boss has kidnapped your partner in crime. The love of your life. 'What,' you intone breathlessly. 'She doesn't stoop to meddle with cowboys!' Wesdru grabs " +
+                "most feared crime boss has kidnapped your partner in crime. The love of your life. 'What,' you intone breathlessly. 'She doesn't stoop to meddle with cowboys!' " +
+                "'Her guys ambushed her on Fregola's job,' Wesdru adds clinically. She grabs " +
                 "your shoulders roughly and makes brutal eye contact. 'I don't know why. But I do know we have to go NOW. You and I " +
                 "both know how cruel Dras can be.'\n\n\nYou only have enough time to buy one thing from the market. What do you take?";
 
-        text = new TextArea(dialogue, Heist.skin);
+        TextArea text = new TextArea(dialogue, Heist.skin);
         table.add(text).grow().colspan(2);
 
         table.row();
 
-        button1 = new TextButton("Modded Grenade", Heist.skin);
-        table.add(button1).width(200).expand();
+        TextButton button1 = new TextButton("Grenade", Heist.skin);
+        table.add(button1).width(100).expand();
 
-        button2 = new TextButton("Lockpick", Heist.skin);
+        TextButton button2 = new TextButton("Lockpick", Heist.skin);
         table.add(button2).width(100).expand();
 
         button1.addListener(new ChangeListener() {
