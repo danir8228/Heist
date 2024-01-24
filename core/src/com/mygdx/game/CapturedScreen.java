@@ -167,7 +167,7 @@ public class CapturedScreen implements Screen {
         if ((game.attackedFirst)) {
             text = "You come to in a dimly-lit room, piercing blue eyes staring at you through two sets of prison bars. 'Lorena!' you gasp, fighting your migraine to throw yourself at your set of bars. \n" +
                     "\n" +
-                    "'y/n, holy f--' she takes a deep shaky breath. 'I thought you were *dead*. You *and* Wesdru--' she gestures at a prone body in the cell next to you. 'I'm fine,' you reassure her evenly. 'This isn't my blood. We...may have decided to fight our way in. I know, I know.' You wave off Lorena's outraged look before she can lecture you, leaning into Wesdru's cell to slap her awake. \n" +
+                    "'" + game.name + ", holy f--' she takes a deep shaky breath. 'I thought you were *dead*. You *and* Wesdru--' she gestures at a prone body in the cell next to you. 'I'm fine,' you reassure her evenly. 'This isn't my blood. We...may have decided to fight our way in. I know, I know.' You wave off Lorena's outraged look before she can lecture you, leaning into Wesdru's cell to slap her awake. \n" +
                     "\n" +
                     "She snaps awake with a gasp. 'Fuck! What the hell is going on?!' 'I have no idea,' Lorena whispers with a grimace. 'They only bring food while I'm asleep.'\n" +
                     "\n" +
@@ -176,7 +176,7 @@ public class CapturedScreen implements Screen {
         else if ((!game.withWesdru) && (game.enteredSR)) { //alone and evil
             text = "You come to in a dimly-lit room, piercing blue eyes staring at you through two sets of prison bars. 'Lorena!' you gasp, pushing through the piercing pain in your leg to turn and face her.\n" +
                     "\n" +
-                    "'y/n, holy f--' she takes a deep shaky breath. 'I thought you were *dead*. What the fuck were you thinking, coming here alone! you-you--' You cut off her rambling sharply. 'There was a change of plans. Wesdru stayed behind. Can you fight?' 'Can *you*?' she replies icily. More rage to funnel, you think. 'I'll be fine.' ";
+                    "'" + game.name + ", holy f--' she takes a deep shaky breath. 'I thought you were *dead*. What the fuck were you thinking, coming here alone! you-you--' You cut off her rambling sharply. 'There was a change of plans. Wesdru stayed behind. Can you fight?' 'Can *you*?' she replies icily. More rage to funnel, you think. 'I'll be fine.' ";
         }
         else { //romantic
             text = "You come to in a dimly-lit room, piercing blue eyes staring at you through two sets of prison bars. 'Lorena!' you gasp, fighting your migraine to throw yourself at your set of bars. 'Don't push yourself, you've been out a couple hours,' she says with a light smile. She's bleeding sluggishly from a cut to her temple and obviously bruised, but not majorly hurt, you inventory quickly. Lorena laughs knowingly. 'I'm fine. You should be worried about Wesdru.' Following her gaze, you notice a prone body in the cell next to yours. You can just barely reach her hand, which you squeeze as hard as you can, until Wesdru snaps awake with a gasp. 'Fuck! What the hell is going on?!' 'I have no idea,' Lorena whispers with a grimace. 'They only bring food while I'm asleep.'\n" +

@@ -13,6 +13,9 @@ public class Heist extends Game {
     public SpriteBatch batch;
     public BitmapFont font;
 
+    //entered name
+    public String name;
+
     //game file - decisions
     public boolean hasGrenade = false;
     public boolean hasLockpick = false;
@@ -26,7 +29,7 @@ public class Heist extends Game {
     //determines endscreen
     public int END = 0;
 
-    //for end tracker; doesn't reset
+    //for end tracker; doesn't reset; haven't implemented yet.
     public boolean END1 = false;
     public boolean END2 = false;
     public boolean END3 = false;

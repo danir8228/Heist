@@ -17,12 +17,14 @@ public class EndScreen implements Screen {
 
     private Music backgroundMusic;
 
-    private String[] text;
+    private String[] results;
 
     private Stage stage;
     private Table table;
     private TextButton button1;
     private TextButton button2;
+
+    private ScrollingText text;
 
     public EndScreen(final Heist game) {
         this.game = game;
@@ -35,9 +37,10 @@ public class EndScreen implements Screen {
     @Override
     public void show() {
         //text
-        text = returnText();
+        results = returnText();
+        text = new ScrollingText (results[0], 0.01f);
 
-        if (text[1].equals("bad")) {
+        if (results[1].equals("bad")) {
             backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("It's Got Old.mp3"));
         }
         backgroundMusic.play();
@@ -71,6 +74,7 @@ public class EndScreen implements Screen {
                 game.enteredSR = false; //security room; false means entered MR (mystery room)
                 game.inHallSecondTime = false;
                 game.wasCaptured = false;
+                game.usedLockpick = false;
                 game.END = 0;
 
                 game.setScreen(new MarketScreen(game));
@@ -87,15 +91,18 @@ public class EndScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        if (text[1].equals("good")){
+        if (results[1].equals("good")){
             ScreenUtils.clear(0, 0.2f, 0, 1);
         }
         else { //bad
             ScreenUtils.clear(0.2f, 0, 0, 1);
         }
 
+        text.update(delta);
+        String textToDisplay = this.text.getTextToDisplay();
+
         game.batch.begin();
-        game.font.draw(game.batch, text[0], 20, 400);
+        game.font.draw(game.batch, textToDisplay, 20, 400);
         game.batch.end();
 
         stage.draw();
@@ -262,7 +269,7 @@ public class EndScreen implements Screen {
                             "a few seconds for her to die, blood pumping out in gushes, futilely. Time slows, the unspeakable brutality numbing your chest. You barely register \n" +
                             "Lorena's cries of distress. \n" +
                             "\n" +
-                            "'Nothing to say?' Dras laughs deeply, obviously relishing in her success. 'I must say, it's incredibly satisfying to see y/n Sanchez *shut her \n" +
+                            "'Nothing to say?' Dras laughs deeply, obviously relishing in her success. 'I must say, it's incredibly satisfying to see" + game.name +"Sanchez *shut their \n" +
                             "fucking mouth*.' There's a blur from your peripheral vision, and Lorena-- suddenly, somehow, free from her restraints--launches herself at Dras \n" +
                             "with a guttural cry. She manages to dig the heel of her hand into Dras's windpipe, downing her with a choked off breath and allowing Lorena to \n" +
                             "stomp mercilessly at her chest. You think you see her successfully break a rib before Dras's guards riddle her with bullets, her body slumping to \n" +
@@ -284,7 +291,7 @@ public class EndScreen implements Screen {
                             "feel the blood pumping out in gushes, futilely, but there's no pain. Time slows, the unexpected brutality numbing your other senses. You barely \n" +
                             "register Lorena's screams. \n" +
                             "\n" +
-                            "'Nothing to say?' Dras laughs deeply, obviously relishing in her success. 'I must say, it's incredibly satisfying to see y/n Sanchez *shut her \n" +
+                            "'Nothing to say?' Dras laughs deeply, obviously relishing in her success. 'I must say, it's incredibly satisfying to see" + game.name + "Sanchez *shut their \n" +
                             "fucking mouth*.' There's a blur from your peripheral vision, and Lorena-- suddenly, somehow, free from her restraints--launches herself at Dras \n" +
                             "with a guttural cry. She manages to dig the heel of her hand into Dras's windpipe, downing her with a choked off breath and allowing Lorena to \n" +
                             "stomp mercilessly at her chest. You think you see her successfully break a rib before Dras's guards riddle her with bullets, her body slumping to\n" +
@@ -314,7 +321,7 @@ public class EndScreen implements Screen {
             case 7:
                 text[0] = "Suddenly, you remember the grenade you grabbed at the market, hours earlier. It's heavy and cold in your hand, demanding real consideration. \n" +
                         "Fregola yelps when he sees it, obviously terrified but determined not to interact with you if he can help it. The noise draws Wesdru's attention. \n" +
-                        "'y/n...you cannot be considering blowing up that room!' She grins widely at you. 'Who am I kidding, with your impulsive streak? Of course you are. \n" +
+                        "'" + game.name + "...you cannot be considering blowing up that room!' She grins widely at you. 'Who am I kidding, with your impulsive streak? Of course you are. \n" +
                         "God help us.' You smirk back, knowing that she's delighted, and that, presented with the opportunity, she would do the same thing. \n" +
                         "\n" +
                         "Without further ado, you manage to time it perfectly, throwing it into the room as it's held open for a particularly large piece of equipment. \n" +
@@ -330,7 +337,7 @@ public class EndScreen implements Screen {
                 break;
             case 8:
                 if (game.attackedFirst) {
-                    text[0] = "'Nothing to say?' Dras laughs deeply, obviously relishing in her success. 'I must say, it's incredibly satisfying to see y/n Sanchez *shut their \n" +
+                    text[0] = "'Nothing to say?' Dras laughs deeply, obviously relishing in her success. 'I must say, it's incredibly satisfying to see" + game.name + "Sanchez *shut their \n" +
                             "fucking mouth*.' \n" +
                             "\n" +
                             "You lower your head when she begins to sneer, as if disheartened, which covers for your wince as you expertly slide your dislocated wrist out of the\n" +
@@ -350,7 +357,7 @@ public class EndScreen implements Screen {
                     text[1] = "good";
                 }
                 else {
-                    text[0] = "'Nothing to say?' Dras laughs deeply, obviously relishing in her success. 'I must say, it's incredibly satisfying to see y/n Sanchez *shut their \n" +
+                    text[0] = "'Nothing to say?' Dras laughs deeply, obviously relishing in her success. 'I must say, it's incredibly satisfying to see" + game.name + "Sanchez *shut their \n" +
                             "fucking mouth*.' \n" +
                             "\n" +
                             "You lower your head when she begins to sneer, as if disheartened, which covers for your wince as you expertly slide your dislocated wrist out of \n" +
@@ -408,7 +415,7 @@ public class EndScreen implements Screen {
                 text[1] = "good";
                 if (!game.withWesdru) {
                     text[0] = "'*No*,' you hiss emphatically, 'I need us to-- we're making it out. We need to leave--' Distantly, you feel your body start to shake, the \n" +
-                            "adrenaline wearing off. Lorena's eyes widen, searching for eye contact. 'y/n. Look at me. I'm alive. We're alive. I understand. We're leaving now, \n" +
+                            "adrenaline wearing off. Lorena's eyes widen, searching for eye contact. '" + game.name + ". Look at me. I'm alive. We're alive. I understand. We're leaving now, \n" +
                             "I promise.' \n" +
                             "\n" +
                             "Thankfully, the exit is down the next hall, unguarded and--held open by Wesdru. She rushes forward, helping Lorena with your weight. 'You're a \n" +
@@ -440,10 +447,8 @@ public class EndScreen implements Screen {
                             "conscience, see the two Sanchezes seperated.' The comment warms your heart, your arm around Lorena's shoulders giving a little squeeze. \n" +
                             "\n" +
                             "You say your goodbyes, and return peacefully to your home with your wife. ";
+                    break;
                 }
-            default:
-                text[0] = "ERROR";
-                text[1] = "good";
         }
         return text;
     }

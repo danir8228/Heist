@@ -135,8 +135,8 @@ public class OutsideScreen implements Screen {
                 text.setText("You start walking directly into the guards' line of vision before Wesdru can object. " +
                         "'Hello, boys,' you call out calmly, tipping your hat gracefully as you come to a stop in front of them. " +
                         "Wesdru is nowhere to be seen, probably unwilling to risk herself on a lark, you think fondly. " +
-                        "The man on the left leans his hands on his shoulder holsters menacingly. '[Your name]. Can't say " +
-                        "I'm surprised.' You supress your shock at the name (yours!), schooling your features into an impatient " +
+                        "The man on the left leans his hands on his shoulder holsters menacingly. '" + game.name + ". Can't say " +
+                        "I'm surprised.' You suppress your shock at the name, schooling your features into an impatient " +
                         "expression. 'Why would you be? I'm here to see Dras.' 'On what business?' the guard responds. " +
                         "'None of yours,' you reply coldly. 'Now step aside before I put a bullet in you for my troubles.' " +
                         "The guards share a look of slight amusement before slowly stepping away from the door, allowing you " +

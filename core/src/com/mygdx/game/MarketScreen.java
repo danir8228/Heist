@@ -50,7 +50,7 @@ public class MarketScreen implements Screen {
         table.padTop(100);
 
         //button and text box setup
-        String dialogue = "You turn around from the market stall to the sound of your name at a shout. It's your long-time friend and " +
+        String dialogue = "'" + game.name +"!' " + "You turn around from the market stall to the sound of your name at a shout. It's your long-time friend and " +
                 " fellow bounty hunter, Wesdru. There's an urgency to her mannerisms that raises your heart rate immediately, " +
                 "your hand flying to the sword pommel at your hip. 'It's Lorena. Dras has her.' Keegin Dras, this lawless town's " +
                 "most feared crime boss has kidnapped your partner in crime. The love of your life. 'What,' you intone breathlessly. 'She doesn't stoop to meddle with cowboys!' " +
